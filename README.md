@@ -68,11 +68,6 @@ Direction	The direction of the call: 0 for incoming calls, 1 for outgoing calls.
 Date	The date the call occurred, in the format YYYY-MM-DD (e.g., "2024-09-01").
 
 Sample CSV Format:
-  User,Party,Duration,Direction,Date
-  User1,Party1,12:00,1,2024-09-01
-  User2,Party3,10:00,0,2024-09-02
-  User3,Party2,7:00,1,2024-09-03
-  User4,Party4,15:00,0,2024-09-04
-  User1,Party5,8:00,1,2024-09-05
-  ...
+  ![Uploading image.png…]()
+
 
