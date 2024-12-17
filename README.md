@@ -68,6 +68,7 @@ Direction	The direction of the call: 0 for incoming calls, 1 for outgoing calls.
 Date	The date the call occurred, in the format YYYY-MM-DD (e.g., "2024-09-01").
 
 Sample CSV Format:
-  ![Uploading image.png…]()
+![Screenshot 2024-12-17 210158](https://github.com/user-attachments/assets/77e45d08-6423-4395-8512-c0a14b307698)
 
+  
 
