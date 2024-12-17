@@ -67,9 +67,10 @@ Duration	The duration of the call in minutes and seconds (e.g., "5:30" for 5 min
 Direction	The direction of the call: 0 for incoming calls, 1 for outgoing calls.
 Date	The date the call occurred, in the format YYYY-MM-DD (e.g., "2024-09-01").
 
-Sample CSV Format:
+Sample Output:
 
-![Screenshot 2024-12-17 210158](https://github.com/user-attachments/assets/77e45d08-6423-4395-8512-c0a14b307698)
+![WhatsApp Image 2024-12-17 at 19 14 12_09eafcf5](https://github.com/user-attachments/assets/4817480e-72c9-4800-a3de-24638499ba5b)
+
 
   
 
