@@ -36,38 +36,43 @@ Technologies Used
     Data Visualization: Matplotlib
     File Format: CSV
 
-Setup and Installation
+Installation
 Prerequisites
 
     Python 3.x installed
     Pip (Python package manager)
 
-Steps to Set Up
+How to Use
 
-    Clone the repository:
+    Upload Your Call Log CSV:
+        On the homepage of the app, you will find an option to upload your call log file. The file must be in CSV format.
+        The CSV file should contain the following columns: User, Party, Duration, Direction, and Date.
 
-git clone https://github.com/yourusername/Mobile-Call-Log-Analysis.git
-cd Mobile-Call-Log-Analysis
+    Analyze the Data:
+        After uploading the file, the backend will process the data and generate:
+            A pie chart showing the distribution of calls between the user and various parties.
+            A line graph displaying the total call duration over time for a specified date range (e.g., from September to November).
 
-Install dependencies:
+    Visualize the Results:
+        The pie charts will show how many calls the user made to each party.
+        The line graph will show the daily total call duration, helping you analyze trends in your call activity.
 
-Create a virtual environment (optional but recommended):
+File Format
 
-python -m venv venv
-source venv/bin/activate  # For Windows, use 'venv\Scripts\activate'
+Your CSV file should have the following columns:
+Column	Description
+User	The name or ID of the user whose calls are being logged (e.g., "User1").
+Party	The name or ID of the party that the user called (e.g., "Party1").
+Duration	The duration of the call in minutes and seconds (e.g., "5:30" for 5 minutes and 30 seconds).
+Direction	The direction of the call: 0 for incoming calls, 1 for outgoing calls.
+Date	The date the call occurred, in the format YYYY-MM-DD (e.g., "2024-09-01").
 
-Install the required Python libraries:
+Sample CSV Format:
+  User,Party,Duration,Direction,Date
+  User1,Party1,12:00,1,2024-09-01
+  User2,Party3,10:00,0,2024-09-02
+  User3,Party2,7:00,1,2024-09-03
+  User4,Party4,15:00,0,2024-09-04
+  User1,Party5,8:00,1,2024-09-05
+  ...
 
-pip install -r requirements.txt
-
-Run the Flask app:
-
-After installing dependencies, run the Flask app:
-
-python app.py
-
-The app will start running locally at http://127.0.0.1:5000/.
-
-Access the App:
-
-Open a browser and go to http://127.0.0.1:5000/ to access the call log analysis tool.
