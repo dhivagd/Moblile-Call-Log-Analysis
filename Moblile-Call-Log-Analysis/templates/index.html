@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moblile Call Log Analysis</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+        }
+        .upload-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .chart-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px;
+        }
+        .chart-box {
+            margin: 20px;
+            width: 400px;
+            height: 400px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .graph-container {
+            text-align: center;
+            margin-top: 40px;
+        }
+        .graph-container img {
+            width: 100%;
+            max-width: 900px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Moblile Call Log Analysis</h1>
+
+    <div class="upload-container">
+        <form id="upload-form" enctype="multipart/form-data">
+            <input type="file" name="file" id="file-input" accept=".csv" required />
+            <button type="submit">Upload CSV</button>
+        </form>
+    </div>
+
+    <div class="chart-container" id="charts"></div>
+
+    <div class="graph-container">
+        <h2>Call Duration Analysis Over Time</h2>
+        <img id="duration-graph" src="" alt="Call Duration Graph" />
+    </div>
+
+    <script>
+        // Handle the form submission for file upload
+        document.getElementById("upload-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const formData = new FormData();
+            formData.append("file", document.getElementById("file-input").files[0]);
+
+            fetch("/upload", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("File upload failed");
+                }
+                return response.json();
+            })
+            .then(data => {
+                const chartContainer = document.getElementById("charts");
+                chartContainer.innerHTML = ''; // Clear existing charts
+
+                // Generate a pie chart for each user
+                for (const [user, chartData] of Object.entries(data)) {
+                    const chartBox = document.createElement("div");
+                    chartBox.classList.add("chart-box");
+                    const canvas = document.createElement("canvas");
+                    chartBox.appendChild(canvas);
+                    chartContainer.appendChild(chartBox);
+
+                    new Chart(canvas, {
+                        type: "pie",
+                        data: {
+                            labels: chartData.labels,
+                            datasets: [{
+                                label: `Call Distribution for ${user}`,
+                                data: chartData.values,
+                                backgroundColor: [
+                                    "#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0", "#9966FF",
+                                    "#FF9F40", "#FFCD56", "#C9CBCF", "#9D9D9D", "#5B9BD5"
+                                ]
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                legend: {
+                                    position: 'top',
+                                },
+                                title: {
+                                    display: true,
+                                    text: `Call Distribution for ${user}`
+                                }
+                            }
+                        }
+                    });
+                }
+
+                // Display the call duration analysis graph
+                document.getElementById("duration-graph").src = "/graph";
+            })
+            .catch(error => {
+                alert("Error: " + error.message);
+            });
+        });
+    </script>
+</body>
+</html>

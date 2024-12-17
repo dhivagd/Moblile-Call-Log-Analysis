@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Results</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="title text-center">CDR Analysis Results</h1>
+        <div class="card mt-4">
+            <div class="card-body">
+                <p><b>Total Calls:</b> {{ total_calls }}</p>
+                <p><b>Total Duration:</b> {{ total_duration }} seconds</p>
+                <p><b>Longest Call:</b> {{ longest_call }} seconds on {{ longest_call_date }}</p>
+            </div>
+        </div>
+        <div class="mt-4">
+            <h2>Visualizations</h2>
+            <img src="/static/duration_by_type.png" alt="Duration by Type" class="img-fluid mt-3">
+            <img src="/static/duration_over_time.png" alt="Duration Over Time" class="img-fluid mt-3">
+        </div>
+        <a href="/" class="btn btn-secondary mt-4">Back to Home</a>
+    </div>
+</body>
+</html>
