@@ -7,11 +7,10 @@ Table of Contents:-
     Project Overview
     Features
     Technologies Used
-    Setup and Installation
+    Installation
     How to Use
     File Format
-    Contributing
-    License
+    Sample Output
 
 Project Overview:-
 
